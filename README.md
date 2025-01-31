@@ -146,3 +146,10 @@ In addition, the new endpoints that I have added are listed below:
     * URL: localhost:8080/compensation/info/{id}
     * RESPONSE: Employee, Compensation
 ```
+
+Point of Concerns:
+```
+- Possible duplicates... employees can have the same First/Last name.
+  - Enfore unique constraints (email?)
+- 
+```
