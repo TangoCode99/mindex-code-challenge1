@@ -2,6 +2,8 @@ package com.mindex.challenge.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,8 @@ import com.mindex.challenge.service.EmployeeService;
 @RequestMapping("/compensation")
 public class CompensationController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(CompensationController.class);
+
     @Autowired
     private CompensationService compensationService;
 
@@ -28,16 +32,22 @@ public class CompensationController {
 
     @PostMapping("/{employeeId}")
     public Compensation createCompensation(@PathVariable String employeeId, @RequestBody Compensation compensation) {
+        LOG.debug("Received compensation create request for [{}]", employeeId);
+
         return compensationService.create(employeeId, compensation);
     }
 
     @GetMapping("/{employeeId}")
     public List<Compensation> getCompensation(@PathVariable String employeeId) {
+        LOG.debug("Received compensation create request for [{}]", employeeId);
+
         return compensationService.getCompensation(employeeId);
     }
 
     @GetMapping("/info/{employeeId}")
     public EmployeeCompensationDTO getAllInfo(@PathVariable String employeeId) {
+        LOG.debug("Received compensation create request for [{}]", employeeId);
+
         Employee employee = employeeService.read(employeeId);
         List<Compensation> compensation = this.getCompensation(employeeId);
 
