@@ -50,6 +50,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    
+    @Override
+    public void delete(String id) {
+        LOG.debug("Deleting employee with id [{}]", id);
+
+        Employee employee = employeeRepository.findByEmployeeId(id);
+
+        if (employee == null) {
+            throw new RuntimeException("Invalid employeeId: " + id);
+        }
+
+        employeeRepository.deleteById(id);
+        
+    }
+
     @Override
     public List<Employee> getAll() {
         LOG.debug("Getting All Employees Information");
