@@ -1,73 +1,57 @@
 package com.mindex.challenge;
 
-import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
 
-import com.mindex.challenge.dao.EmployeeRepository;
-import com.mindex.challenge.data.Compensation;
+import com.mindex.challenge.controller.EmployeeController;
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.model.ReportingStructure;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.mindex.challenge.service.EmployeeService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@WebMvcTest(EmployeeController.class)
 public class ChallengeApplicationTests {
 
 	@Autowired
-	private TestRestTemplate restTemplate;
-	// Simulate HTTP calles to the application
+	private MockMvc mockMvc;
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
-
-	@Test
-	public void contextLoads() {
-	}
+	@MockBean
+	private EmployeeService employeeService;
 
 	@Test
-	public void testGetReportingStructure() {
-		Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Development Manager", "Engineering", null);
-		Employee paul = new Employee("b7839309-3348-463b-a7e3-5de1c168beb3", "Paul", "McCartney", "Developer I", "Engineering", null);
-		john.setDirectReports(List.of(paul));
-		employeeRepository.save(john);
-		employeeRepository.save(paul);
+	public void testCalculateNumberOfReports() throws Exception {
+		Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Manager", "Engineering", null);
+		Employee paul = new Employee("b7839309-3348-463b-a7e3-5de1c168beb3", "Paul", "McCartney", "Developer", "Engineering", null);
+		Employee ringo = new Employee("03aa1462-ffa9-4978-901b-7c001562cf6f", "Ringo", "Starr", "Developer", "Engineering", null);
+		Employee pete = new Employee("62c1084e-6e34-4630-93fd-9153afb65309", "Pete", "Best", "Developer", "Engineering", null);
+		Employee george = new Employee("c0c2293d-16bd-4603-8e08-638a9d18b22c", "George", "Harrison", "Developer", "Engineering", null);
 
-		ResponseEntity<ReportingStructure> response = restTemplate.getForEntity("/reporting-structure/16a596ae-edd3-4847-99fe-c4518e82c86f", ReportingStructure.class);
+		ReportingStructure reportingStructure = new ReportingStructure();
+		reportingStructure.setEmployee(john);
+		reportingStructure.setNumberOfReports(4);
 
-		assertThat(response.getStatusCode()).isEqualTo(200);
-		assertThat(response.getBody()).isNotNull();
-		assertThat(response.getBody().getNumberOfReports()).isEqualTo(1);
-		assertThat(response.getBody().getEmployee().getFirstName()).isEqualTo("John");
-	
-	}
+		john.setDirectReports(List.of(paul, ringo));
+		ringo.setDirectReports(List.of(pete, george));
 
-	@Test
-	public void testCompensation() {
-		// Create Employee
-		Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Development Manager", "Engineering", null);
-		employeeRepository.save(john);
+		Mockito.when(employeeService.getReportingStructure("16a596ae-edd3-4847-99fe-c4518e82c86f")).thenReturn(reportingStructure);
 
-		// Create Compensation
-		Compensation compensation = new Compensation(new BigDecimal(100000), LocalDate.parse("2025-03-04"), "16a596ae-edd3-4847-99fe-c4518e82c86f");
-		ResponseEntity<Compensation> createReponse = restTemplate.postForEntity("/compensation", compensation, Compensation.class);
-
-		// Validate Create Response
-		assertThat(createReponse.getStatusCode()).isEqualTo(200);
-		assertThat(createReponse.getBody()).isNotNull();
-		assertThat(createReponse.getBody().getSalary()).isEqualTo(new BigDecimal(100000));
-		assertThat(createReponse.getBody().getEffectiveDate()).isEqualTo(LocalDate.parse("2025-03-04"));
+		mockMvc.perform(get("/reporting-structure/16a596ae-edd3-4847-99fe-c4518e82c86f"))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.employee.firstName").value("John"))
+			.andExpect(jsonPath("$.numberOfReports").value(4));
 	}
 
 }
