@@ -105,3 +105,18 @@ persist and fetch `Compensation` data for a specific `Employee` using the persis
 
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by GitHub and Bitbucket.
+
+## My Edits
+I have added on a dozen more employees to test out the new features as a showcase of my understanding of the reporting
+structure feature. 
+```
+                    Alice Johnson                               Kate Walker
+                  /               \ 
+          Bob Smith             Charlie Brown                   Liam Young
+          /       \             /           \
+  David Williams  Eva Taylor  Frank Moore   Grace Davis
+        |
+  Hannah Wilson
+    |          \
+  Ian Clark   Jack Lewis
+```
