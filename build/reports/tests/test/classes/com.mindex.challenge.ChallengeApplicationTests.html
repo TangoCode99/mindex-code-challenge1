@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.064s</div>
+<div class="counter">0.070s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,8 +81,23 @@
 </tr>
 </thead>
 <tr>
-<td class="success">testCalculateNumberOfReports</td>
-<td class="success">0.064s</td>
+<td class="success">testCalculateNumberOfReports1</td>
+<td class="success">0.065s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCalculateNumberOfReports2</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCalculateNumberOfReports3</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCalculateNumberOfReports4</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,8 +105,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>21:24:16.565 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mindex.challenge.ChallengeApplicationTests]: ChallengeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-21:24:16.633 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.ChallengeApplicationTests
+<pre>13:34:41.566 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mindex.challenge.ChallengeApplicationTests]: ChallengeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:34:41.634 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.ChallengeApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -101,14 +116,16 @@
  =========|_|==============|___/=/_/_/_/
 ?[32m :: Spring Boot :: ?[39m              ?[2m (v3.2.3)?[0;39m
 
-?[2m2025-01-30T21:24:16.805-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Starting ChallengeApplicationTests using Java 23.0.2 with PID 57798 (started by tangonham in /Users/tangonham/Downloads/mindex-code-challenge)
-?[2m2025-01-30T21:24:16.805-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Running with Spring Boot v3.2.3, Spring v6.1.4
-?[2m2025-01-30T21:24:16.806-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: &quot;default&quot;
-?[2m2025-01-30T21:24:17.698-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.b.t.m.w.SpringBootMockServletContext?[0;39m ?[2m:?[0;39m Initializing Spring TestDispatcherServlet ''
-?[2m2025-01-30T21:24:17.698-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Initializing Servlet ''
-?[2m2025-01-30T21:24:17.699-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Completed initialization in 1 ms
-?[2m2025-01-30T21:24:17.713-05:00?[0;39m ?[32m INFO?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Started ChallengeApplicationTests in 1.045 seconds (process running for 1.5)
-?[2m2025-01-30T21:24:17.747-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m57798?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [16a596ae-edd3-4847-99fe-c4518e82c86f]
+?[2m2025-01-31T13:34:41.800-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Starting ChallengeApplicationTests using Java 23.0.2 with PID 10662 (started by tangonham in /Users/tangonham/Downloads/mindex-code-challenge)
+?[2m2025-01-31T13:34:41.800-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Running with Spring Boot v3.2.3, Spring v6.1.4
+?[2m2025-01-31T13:34:41.801-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: &quot;default&quot;
+?[2m2025-01-31T13:34:42.685-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.b.t.m.w.SpringBootMockServletContext?[0;39m ?[2m:?[0;39m Initializing Spring TestDispatcherServlet ''
+?[2m2025-01-31T13:34:42.685-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Initializing Servlet ''
+?[2m2025-01-31T13:34:42.687-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Completed initialization in 0 ms
+?[2m2025-01-31T13:34:42.701-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Started ChallengeApplicationTests in 1.033 seconds (process running for 1.49)
+?[2m2025-01-31T13:34:42.734-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [16a596ae-edd3-4847-99fe-c4518e82c86f]
+?[2m2025-01-31T13:34:42.771-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [03aa1462-ffa9-4978-901b-7c001562cf6f]
+?[2m2025-01-31T13:34:42.774-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [c0c2293d-16bd-4603-8e08-638a9d18b22c]
 </pre>
 </span>
 </div>
@@ -130,7 +147,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.6</a> at Jan 30, 2025, 9:24:19 PM</p>
+<a href="http://www.gradle.org">Gradle 8.6</a> at Jan 31, 2025, 1:34:44 PM</p>
 </div>
 </div>
 </body>

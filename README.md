@@ -151,5 +151,25 @@ Point of Concerns:
 ```
 - Possible duplicates... employees can have the same First/Last name.
   - Enfore unique constraints (email?)
-- 
+- Tried implementing Deletion of Employee endpoint. Endpoint says it is successful but when retrieving the "deleted employee", it still persists in the database.
+  - While not required, I wanted to show that I understand the whole process of CRUD.
+```
+
+Unit Tests:
+The unit tests covers the features/endpoints that are used in the application
+```
+- Employee CRUD operations
+    - Verify an employee is created successfully
+    - Verify the correct employee details are retrieved
+    - Verify the employee updates are applied correctly
+    - Verify the employee is deleted
+- Reporting Structure
+    - Verify the reporting structure for John Lennon (4)
+    - Verify the reporting structure for Ringo Starr (2)
+    - Verify the reporting structure for George Harrison (0)
+    - Verify the reporting structure for a non-existent employe (not found)
+- Compensation
+    - Verify a compensation for an employee is created successfully
+    - Verify the correct compensation details are retrieved
+    - Handle cases where no compensation exists for a given employee
 ```

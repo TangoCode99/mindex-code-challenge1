@@ -2,6 +2,7 @@ package com.mindex.challenge.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -14,7 +15,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.dao.EmployeeRepository;
@@ -35,13 +38,14 @@ public class CompensationServiceTest {
     @MockBean
     private EmployeeRepository employeeRepository;
 
+    // Scenario: Creating a compensation for an employee.
     @Test
     public void testCreateCompensation() {
         Compensation compensation = new Compensation(new BigDecimal(100000), LocalDate.parse("2025-01-01"), "16a596ae-edd3-4847-99fe-c4518e82c86f");
         Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Manager", "Engineering", null);
         compensation.setEmployeeId(john.getEmployeeId());
 
-        when(employeeRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f")).thenReturn(john);
+        when(employeeRepository.findByEmployeeId(john.getEmployeeId())).thenReturn(john);
         when(compensationRepository.save(any(Compensation.class))).thenReturn(compensation);
 
         Compensation createdCompensation = compensationService.create("16a596ae-edd3-4847-99fe-c4518e82c86f", compensation);
@@ -51,6 +55,7 @@ public class CompensationServiceTest {
         assertEquals(LocalDate.parse("2025-01-01"), createdCompensation.getEffectiveDate());
     }
 
+    // Scenario: Getting an existing compensation.
     @Test
     public void testGetCompensation() {
         Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Manager", "Engineering", null);
@@ -65,4 +70,20 @@ public class CompensationServiceTest {
         assertEquals(new BigDecimal(100000), fetchCompensation.get(0).getSalary());;
         assertEquals(LocalDate.parse("2025-01-01"), fetchCompensation.get(0).getEffectiveDate());
     }
+
+    // Scenario: Attemp to fetch a compensation that doesn't exist.
+    @Test
+    public void testNoCompensation() {
+        Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Manager", "Engineering", null);
+
+        ResponseStatusException exception = assertThrows(
+            ResponseStatusException.class, 
+            () -> compensationService.getCompensation(john.getEmployeeId())
+        );
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+        assertEquals("Compensation Not Found", exception.getReason());
+
+    }
+
 }

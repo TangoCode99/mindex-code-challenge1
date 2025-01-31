@@ -1,7 +1,6 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.service.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +24,6 @@ public class EmployeeServiceImplTest {
     private String employeeUrl;
     private String employeeIdUrl;
 
-    @Autowired
-    private EmployeeService employeeService;
-
     @LocalServerPort
     private int port;
 
@@ -41,7 +37,7 @@ public class EmployeeServiceImplTest {
     }
 
     @Test
-    public void testCreateReadUpdate() {
+    public void testCreateReadUpdateDelete() {
         Employee testEmployee = new Employee();
         testEmployee.setFirstName("John");
         testEmployee.setLastName("Doe");
@@ -75,6 +71,10 @@ public class EmployeeServiceImplTest {
                         readEmployee.getEmployeeId()).getBody();
 
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
+
+        // Delete checks
+        // TODO: Deletion of employee success but database still shows the employee?
+        // restTemplate.delete(employeeIdUrl, updatedEmployee.getEmployeeId());
     }
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {

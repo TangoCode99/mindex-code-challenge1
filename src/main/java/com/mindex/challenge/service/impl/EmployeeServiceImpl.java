@@ -7,7 +7,9 @@ import com.mindex.challenge.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findByEmployeeId(id);
 
         if (employee == null) {
-            throw new RuntimeException("Invalid employeeId: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found.");
         }
 
         return employee;
@@ -50,7 +52,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    
+    // Delete functionality is still work in progress.
+    // Why is employee still showing up in the database? 
     @Override
     public void delete(String id) {
         LOG.debug("Deleting employee with id [{}]", id);
@@ -58,11 +61,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findByEmployeeId(id);
 
         if (employee == null) {
-            throw new RuntimeException("Invalid employeeId: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found.");
         }
 
-        employeeRepository.deleteById(id);
-        
+        employeeRepository.deleteById(employee.getEmployeeId());
     }
 
     @Override
@@ -79,8 +81,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findByEmployeeId(employeeId);
 
         // If employee does not exist in the database, throw error.
-        if(employee == null) {
-            throw new RuntimeException("Employee not found");
+        if(employee.equals(null)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee Not Found");
         }
 
         int numberOfReports = calculateNumberOfReports(employee);

@@ -9,7 +9,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +39,8 @@ public class EmployeeController {
         return employeeService.read(id);
     }
 
-    // This method allows the user to quickly retrieve all the employees in the database
+    // This method allows the user to quickly retrieve all the employees in the
+    // database
     @GetMapping("/getAllEmployees")
     public List<Employee> getAll() {
         LOG.debug("Retrieve All Employees");
@@ -60,12 +60,8 @@ public class EmployeeController {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         LOG.debug("Received employee delete request for id [{}]", id);
 
-        try {
-            employeeService.delete(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // 204 No Content
-        } catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 404 Not Found
-        }
+        employeeService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/reporting-structure/{employeeId}")
