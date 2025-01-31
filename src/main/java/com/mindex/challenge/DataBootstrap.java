@@ -14,6 +14,9 @@ import java.io.InputStream;
 public class DataBootstrap {
     private static final String DATASTORE_LOCATION = "/static/employee_database.json";
 
+    // If we want to utilize the other database, uncomment this.
+    // private static final String DATASTORE_LOCATION2 = "/static/employee_database2.json"; 
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
