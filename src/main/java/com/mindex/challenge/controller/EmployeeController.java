@@ -42,6 +42,8 @@ public class EmployeeController {
     // This method allows the user to quickly retrieve all the employees in the database
     @GetMapping("/getAllEmployees")
     public List<Employee> getAll() {
+        LOG.debug("Retrieve All Employees");
+
         return employeeService.getAll();
     }
 
@@ -53,43 +55,11 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
 
-    // This method will handle requests to get the ReportingStructure
-    @GetMapping("/reporting-structure/{id}")
-    public ReportingStructure getReportingStructure(@PathVariable String id) {
-        // Retrieve employee based on employeeId
-        Employee employee = read(id); // You need to implement this logic
+    @GetMapping("/reporting-structure/{employeeId}")
+    public ReportingStructure getReportingStructure(@PathVariable String employeeId) {
+        LOG.debug("Get Reporting Structure for id [{}]", employeeId);
 
-        // If employee is not found, return a 404 or handle accordingly
-        if (employee == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
-        }
-
-        // Compute the number of direct reports (this could be dynamic depending on your
-        // data)
-        int numberOfReports = computeNumberOfReports(employee); // Implement this logic
-
-        // Create and return the ReportingStructure
-        return new ReportingStructure(employee, numberOfReports);
+        return employeeService.getReportingStructure(employeeId);
     }
 
-    // This method will compute the number of reports when given the employee id.
-    private int computeNumberOfReports(@PathVariable Employee employee) {
-        if (employee == null || employee.getDirectReports() == null) {
-            return 0; // No reports if there are none or if the employee doesn't exist
-        }
-
-        int count = 0;
-
-        for (Employee directReport : employee.getDirectReports()) {
-            // Fetch the full Employee object for each direct report
-            Employee fullDirectReport = this.read(directReport.getEmployeeId());
-
-            if (fullDirectReport != null) {
-                count++; // Count this direct report
-                count += computeNumberOfReports(fullDirectReport); // Recursively count their reports
-            }
-        }
-
-        return count;
-    }
 }
