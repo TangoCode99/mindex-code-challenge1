@@ -108,7 +108,8 @@ Please upload your results to a publicly accessible Git repo. Free ones are prov
 
 ## My Edits
 I have added on a dozen more employees to test out the new features as a showcase of my understanding of the reporting
-structure feature. 
+structure feature. I made a separate database in the static folder called employee_database2.json so that I wouldn't mess
+up with the original database.
 ```
                     Alice Johnson                               Kate Walker
                   /               \ 
