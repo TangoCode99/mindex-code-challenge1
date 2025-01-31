@@ -121,3 +121,28 @@ up with the original database.
     |          \
   Ian Clark   Jack Lewis
 ```
+
+In addition, the new endpoints that I have added are listed below:
+```
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/reporting-structure/{id}
+    * RESPONSE: Employee
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/getAllEmployees
+    * RESPONSE: List<Employee>
+* CREATE
+    * HTTP Method: POST 
+    * URL: localhost:8080/compensation/{id}
+    * PAYLOAD: Compensation
+    * RESPONSE: Compensation
+* READ
+    * HTTP Method: GET
+    * URL: localhost:8080/compensation/{id}
+    * RESPONSE: Compensation
+* READ
+    * HTTP Method: GET
+    * URL: localhost:8080/compensation/info/{id}
+    * RESPONSE: Employee, Compensation
+```
