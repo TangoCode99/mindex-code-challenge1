@@ -97,13 +97,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         LOG.debug("Calculate the Number of Reports for an Employee");
 
         // If Employee does not have any direct reports.
-        if(employee.getDirectReports() == null) return 0;
+        if(employee == null || employee.getDirectReports() == null) return 0;
 
         // Recursively look through each of the direct reports... like a tree!
         int count = 0;
         for(Employee directReport: employee.getDirectReports()) {
             Employee currEmployee = employeeRepository.findByEmployeeId(directReport.getEmployeeId());
-            count += 1 + calculateNumberOfReports(currEmployee);
+
+            if(currEmployee != null) {
+                count += 1 + calculateNumberOfReports(currEmployee);
+            }
         }
 
         return count;

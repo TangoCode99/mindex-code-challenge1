@@ -1,13 +1,11 @@
 package com.mindex.challenge.data;
 
-import java.util.List;
-
 public class EmployeeCompensationDTO {
 
     private Employee employee;
-    private List<Compensation> compensation;
+    private Compensation compensation;
 
-    public EmployeeCompensationDTO(Employee employee, List<Compensation> compensation) {
+    public EmployeeCompensationDTO(Employee employee, Compensation compensation) {
         this.employee = employee;
         this.compensation = compensation;
     }
@@ -20,11 +18,11 @@ public class EmployeeCompensationDTO {
         this.employee = employee;
     }
 
-    public List<Compensation> getCompensation() {
+    public Compensation getCompensation() {
         return this.compensation;
     }
 
-    public void setCompensation(List<Compensation> compensation) {
+    public void setCompensation(Compensation compensation) {
         this.compensation = compensation;
     }
     

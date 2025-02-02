@@ -1,5 +1,6 @@
 package com.mindex.challenge.service.impl;
 
+import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Employee;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
@@ -26,6 +28,9 @@ public class EmployeeServiceImplTest {
 
     @LocalServerPort
     private int port;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -50,12 +55,10 @@ public class EmployeeServiceImplTest {
         assertNotNull(createdEmployee.getEmployeeId());
         assertEmployeeEquivalence(testEmployee, createdEmployee);
 
-
         // Read checks
         Employee readEmployee = restTemplate.getForEntity(employeeIdUrl, Employee.class, createdEmployee.getEmployeeId()).getBody();
         assertEquals(createdEmployee.getEmployeeId(), readEmployee.getEmployeeId());
         assertEmployeeEquivalence(createdEmployee, readEmployee);
-
 
         // Update checks
         readEmployee.setPosition("Development Manager");
@@ -73,8 +76,8 @@ public class EmployeeServiceImplTest {
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
 
         // Delete checks
-        // TODO: Deletion of employee success but database still shows the employee?
-        // restTemplate.delete(employeeIdUrl, updatedEmployee.getEmployeeId());
+        restTemplate.delete(employeeIdUrl, updatedEmployee.getEmployeeId());
+        assertFalse(employeeRepository.findById(updatedEmployee.getEmployeeId()).isPresent());
     }
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {

@@ -108,7 +108,7 @@ Please upload your results to a publicly accessible Git repo. Free ones are prov
 
 ## My Edits
 I have added on a dozen more employees to test out the new features as a showcase of my understanding of the reporting
-structure feature. I made a separate database in the static folder called employee_database2.json so that I wouldn't mess
+structure feature. I made a separate database in the static folder called `employee_database2.json` so that I wouldn't mess
 up with the original database.
 ```
                     Alice Johnson                               Kate Walker
@@ -122,8 +122,12 @@ up with the original database.
   Ian Clark   Jack Lewis
 ```
 
-In addition, the new endpoints that I have added are listed below:
+In addition, the new endpoints for `Employee` and `Compensation` that I have added are listed below:
 ```
+* DELETE
+    * HTTP Method: DELETE
+    * URL: localhost:8080/employee/{id}
+    * RESPONSE: HttpStatus
 * READ
     * HTTP Method: GET 
     * URL: localhost:8080/reporting-structure/{id}
@@ -147,29 +151,30 @@ In addition, the new endpoints that I have added are listed below:
     * RESPONSE: Employee, Compensation
 ```
 
-Point of Concerns:
+## Future Features / Points of Concerns:
 ```
-- Possible duplicates... employees can have the same First/Last name.
-  - Enfore unique constraints (email?)
-- Tried implementing Deletion of Employee endpoint. Endpoint says it is successful but when retrieving the "deleted employee", it still persists in the database.
-  - While not required, I wanted to show that I understand the whole process of CRUD.
+- Duplicates... employees can have the same First/Last name.
+  - Enforce unique constraints (email / employeeId?)
+- Compensation updates?
+  - Do we update current compesnations or add on a list of compensation?
+- Super optional: delete functionality was added on my own but does deleting an employee remove the direct reports?
 ```
 
-Unit Tests:
-The unit tests covers the features/endpoints that are used in the application
+## Unit Tests:
+The unit tests covers the features/endpoints that might be used in the application.
 ```
 - Employee CRUD operations
-    - Verify an employee is created successfully
-    - Verify the correct employee details are retrieved
-    - Verify the employee updates are applied correctly
-    - Verify the employee is deleted
+    - Verify an employee is created successfully X
+    - Verify the correct employee details are retrieved X
+    - Verify the employee updates are applied correctly X
+    - Verify the employee is deleted X
 - Reporting Structure
-    - Verify the reporting structure for John Lennon (4)
-    - Verify the reporting structure for Ringo Starr (2)
-    - Verify the reporting structure for George Harrison (0)
-    - Verify the reporting structure for a non-existent employe (not found)
+    - Verify the reporting structure for John Lennon (4) X
+    - Verify the reporting structure for Ringo Starr (2) X
+    - Verify the reporting structure for George Harrison (0) X
+    - Verify the reporting structure for a non-existent employe (not found) X
 - Compensation
-    - Verify a compensation for an employee is created successfully
-    - Verify the correct compensation details are retrieved
-    - Handle cases where no compensation exists for a given employee
+    - Verify a compensation for an employee is created successfully X
+    - Verify the correct compensation details are retrieved X
+    - Handle cases where no compensation exists for a given employee X
 ```

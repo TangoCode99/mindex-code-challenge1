@@ -1,6 +1,6 @@
 package com.mindex.challenge.service.impl;
 
-import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import com.mindex.challenge.service.CompensationService;
 public class CompensationServiceImpl implements CompensationService {
 
     private static final Logger LOG = LoggerFactory.getLogger(CompensationServiceImpl.class);
-    
+
     @Autowired
     private CompensationRepository compensationRepository;
 
@@ -31,21 +31,25 @@ public class CompensationServiceImpl implements CompensationService {
         LOG.debug("Creating compensation [{}]", compensation);
         Employee employee = employeeRepository.findByEmployeeId(employeeId);
 
-        if(employee == null) {
+        if (employee == null) {
             throw new RuntimeException("Employee not found with id: " + employeeId);
         }
 
+        compensation.setCompensationId(UUID.randomUUID().toString());
         compensation.setEmployeeId(employeeId);
-        return compensationRepository.save(compensation);
+
+        compensationRepository.insert(compensation);
+
+        return compensation;
     }
 
     @Override
-    public List<Compensation> getCompensation(String employeeId) {
+    public Compensation getCompensation(String employeeId) throws ResponseStatusException {
         LOG.debug("Retrieving Employee's Compensation");
 
-        List<Compensation> compensation = compensationRepository.findByEmployeeId(employeeId);
+        Compensation compensation = compensationRepository.findByEmployeeId(employeeId);
 
-        if(compensation.isEmpty()) {
+        if (compensation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compensation Not Found");
         }
 

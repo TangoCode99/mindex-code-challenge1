@@ -1,7 +1,5 @@
 package com.mindex.challenge.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,7 @@ public class CompensationController {
     }
 
     @GetMapping("/{employeeId}")
-    public List<Compensation> getCompensation(@PathVariable String employeeId) {
+    public Compensation getCompensation(@PathVariable String employeeId) {
         LOG.debug("Received compensation create request for [{}]", employeeId);
 
         return compensationService.getCompensation(employeeId);
@@ -49,7 +47,7 @@ public class CompensationController {
         LOG.debug("Received compensation create request for [{}]", employeeId);
 
         Employee employee = employeeService.read(employeeId);
-        List<Compensation> compensation = this.getCompensation(employeeId);
+        Compensation compensation = this.getCompensation(employeeId);
 
         return new EmployeeCompensationDTO(employee, compensation);
     }

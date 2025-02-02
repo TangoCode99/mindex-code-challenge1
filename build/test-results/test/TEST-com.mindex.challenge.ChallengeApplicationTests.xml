@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.mindex.challenge.ChallengeApplicationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-01-31T18:34:42" hostname="Tangos-MacBook-Pro.local" time="0.072">
+<testsuite name="com.mindex.challenge.ChallengeApplicationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-02-02T04:02:30" hostname="Tangos-MacBook-Pro.local" time="0.034">
   <properties/>
-  <testcase name="testCalculateNumberOfReports1" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.065"/>
+  <testcase name="testCalculateNumberOfReports1" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.029"/>
   <testcase name="testCalculateNumberOfReports2" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.002"/>
-  <testcase name="testCalculateNumberOfReports3" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.002"/>
-  <testcase name="testCalculateNumberOfReports4" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.001"/>
-  <system-out><![CDATA[13:34:41.566 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mindex.challenge.ChallengeApplicationTests]: ChallengeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-13:34:41.634 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.ChallengeApplicationTests
+  <testcase name="testCalculateNumberOfReports3" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.001"/>
+  <testcase name="testCalculateNumberOfReports4" classname="com.mindex.challenge.ChallengeApplicationTests" time="0.0"/>
+  <system-out><![CDATA[?[2m2025-02-01T23:02:30.515-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mt.c.s.AnnotationConfigContextLoaderUtils?[0;39m ?[2m:?[0;39m Could not detect default configuration classes for test class [com.mindex.challenge.ChallengeApplicationTests]: ChallengeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+?[2m2025-02-01T23:02:30.524-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.ChallengeApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -16,20 +16,16 @@
  =========|_|==============|___/=/_/_/_/
 ?[32m :: Spring Boot :: ?[39m              ?[2m (v3.2.3)?[0;39m
 
-?[2m2025-01-31T13:34:41.800-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Starting ChallengeApplicationTests using Java 23.0.2 with PID 10662 (started by tangonham in /Users/tangonham/Downloads/mindex-code-challenge)
-?[2m2025-01-31T13:34:41.800-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Running with Spring Boot v3.2.3, Spring v6.1.4
-?[2m2025-01-31T13:34:41.801-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: "default"
-?[2m2025-01-31T13:34:42.685-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.b.t.m.w.SpringBootMockServletContext?[0;39m ?[2m:?[0;39m Initializing Spring TestDispatcherServlet ''
-?[2m2025-01-31T13:34:42.685-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Initializing Servlet ''
-?[2m2025-01-31T13:34:42.687-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Completed initialization in 0 ms
-?[2m2025-01-31T13:34:42.701-05:00?[0;39m ?[32m INFO?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Started ChallengeApplicationTests in 1.033 seconds (process running for 1.49)
-?[2m2025-01-31T13:34:42.734-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [16a596ae-edd3-4847-99fe-c4518e82c86f]
-?[2m2025-01-31T13:34:42.771-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [03aa1462-ffa9-4978-901b-7c001562cf6f]
-?[2m2025-01-31T13:34:42.774-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m10662?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [c0c2293d-16bd-4603-8e08-638a9d18b22c]
+?[2m2025-02-01T23:02:30.536-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Starting ChallengeApplicationTests using Java 23.0.2 with PID 21999 (started by tangonham in /Users/tangonham/Downloads/mindex-code-challenge)
+?[2m2025-02-01T23:02:30.536-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Running with Spring Boot v3.2.3, Spring v6.1.4
+?[2m2025-02-01T23:02:30.536-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: "default"
+?[2m2025-02-01T23:02:30.676-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.b.t.m.w.SpringBootMockServletContext?[0;39m ?[2m:?[0;39m Initializing Spring TestDispatcherServlet ''
+?[2m2025-02-01T23:02:30.676-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Initializing Servlet ''
+?[2m2025-02-01T23:02:30.676-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Completed initialization in 0 ms
+?[2m2025-02-01T23:02:30.680-05:00?[0;39m ?[32m INFO?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.challenge.ChallengeApplicationTests ?[0;39m ?[2m:?[0;39m Started ChallengeApplicationTests in 0.153 seconds (process running for 2.409)
+?[2m2025-02-01T23:02:30.692-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [16a596ae-edd3-4847-99fe-c4518e82c86f]
+?[2m2025-02-01T23:02:30.712-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [03aa1462-ffa9-4978-901b-7c001562cf6f]
+?[2m2025-02-01T23:02:30.714-05:00?[0;39m ?[32mDEBUG?[0;39m ?[35m21999?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.m.c.controller.EmployeeController     ?[0;39m ?[2m:?[0;39m Get Reporting Structure for id [c0c2293d-16bd-4603-8e08-638a9d18b22c]
 ]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/tangonham/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.12/be4984cb6fd1ef1d11f218a648889dfda44b8a15/byte-buddy-agent-1.14.12.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

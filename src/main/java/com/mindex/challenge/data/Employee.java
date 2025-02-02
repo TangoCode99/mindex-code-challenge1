@@ -2,7 +2,13 @@ package com.mindex.challenge.data;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "employeeCollection")
 public class Employee {
+
+    @Id
     private String employeeId;
     private String firstName;
     private String lastName;
@@ -10,8 +16,7 @@ public class Employee {
     private String department;
     private List<Employee> directReports;
 
-    public Employee() {
-    }
+    public Employee() {}
 
     public Employee(String employeeId, String fName, String lName, String position, String dpt, List<Employee> directReports) {
         this.employeeId = employeeId;

@@ -4,30 +4,32 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "compensationCollection")
 public class Compensation {
     
     @Id
-    private String id;
-
+    private String compensationId;
     private BigDecimal salary;
     private LocalDate effectiveDate;
     private String employeeId;
 
     public Compensation() {}
 
-    public Compensation(BigDecimal salary, LocalDate effectiveDate, String employeeId) {
+    public Compensation(String compensationId, BigDecimal salary, LocalDate effectiveDate, String employeeId) {
+        this.compensationId = compensationId;
         this.salary = salary;
         this.effectiveDate = effectiveDate;
         this.employeeId = employeeId;
     }
 
-    public String getId() {
-        return this.id;
+    public String getCompensationId() {
+        return this.compensationId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCompensationId(String compensationId) {
+        this.compensationId = compensationId;
     }
 
     public BigDecimal getSalary() {

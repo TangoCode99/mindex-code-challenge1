@@ -32,7 +32,7 @@ public class ChallengeApplicationTests {
 	@MockBean
 	private EmployeeService employeeService;
 
-	// Test 1 makes sure the current reporting structure of John Lennon returns 4.
+	// Test 1 confirms the current reporting structure of John Lennon returns 4.
 	@Test
 	public void testCalculateNumberOfReports1() throws Exception {
 		Employee john = new Employee("16a596ae-edd3-4847-99fe-c4518e82c86f", "John", "Lennon", "Manager", "Engineering", null);
@@ -56,7 +56,7 @@ public class ChallengeApplicationTests {
 			.andExpect(jsonPath("$.numberOfReports").value(4));
 	}
 
-	// Test 3 makes sure the current reporting structure of Ringo Starr returns 2.
+	// Test 3 confirms the current reporting structure of Ringo Starr returns 2.
 	@Test
 	public void testCalculateNumberOfReports2() throws Exception {
 		Employee ringo = new Employee("03aa1462-ffa9-4978-901b-7c001562cf6f", "Ringo", "Starr", "Developer", "Engineering", null);
@@ -94,7 +94,7 @@ public class ChallengeApplicationTests {
 			.andExpect(jsonPath("$.numberOfReports").value(0));
 	}
 
-	// Test 4 attempts to return the reporting structure for a non-existent employee
+	// Test 4 confirms to return the reporting structure for a non-existent employee
 	@Test
 	public void testCalculateNumberOfReports4() {
 		ReportingStructure reportingStructure = new ReportingStructure();
